@@ -8,9 +8,9 @@ export const FETCH_TODO_FAILURE = 'FETCH_TODO_FAILURE'
 
 //action creator
 
-export const fetchTodos = () => {
+export const fetchTodos = () => dispatch => {
     dispatch({type: FETCH_TODO_START})
-    axios.get('sdfsdf')
+    axios.get('https://api.kanye.rest')
     .then((res) =>{
         console.log(res)
     })

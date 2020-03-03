@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {fetchTodos} from '../actions/todoAction'
 
 const TodoList = (props) => {
     return (
