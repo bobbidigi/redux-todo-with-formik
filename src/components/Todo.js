@@ -1,9 +1,12 @@
 import React from 'react'
 
-export default function Todo() {
+const Todo = (props) => {
     return (
-        <div>
-            todo
+        <div className="card">
+            {props.todo}<br/>
+            <p>-Kanye West</p>
         </div>
     )
 }
+
+export default Todo

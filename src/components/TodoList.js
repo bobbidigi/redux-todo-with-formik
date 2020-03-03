@@ -1,11 +1,21 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import {fetchTodos} from '../actions/todoAction'
+import Todo from './Todo'
+
 
 const TodoList = (props) => {
+
+    useEffect(() => {
+        props.fetchTodos()
+        return () => {
+            console.log('cleanup')
+        };
+    },[])
+
     return (
         <div>
-            hello
+            {props.todos && props.todos.map((todo) => <Todo todo={todo}/> )}
         </div>
     )
 }
@@ -16,6 +26,6 @@ const mapStateToProps = ({todoReducer}) => {
     }
 }
 
-export default connect(mapStateToProps, )(TodoList);
+export default connect(mapStateToProps, {fetchTodos})(TodoList);
 
 

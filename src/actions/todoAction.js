@@ -12,7 +12,8 @@ export const fetchTodos = () => dispatch => {
     dispatch({type: FETCH_TODO_START})
     axios.get('https://api.kanye.rest')
     .then((res) =>{
-        console.log(res)
+        console.log(res.data.quote)
+        dispatch({type: FETCH_TODO_SUCCESS, payload: res.data.quote})
     })
     .catch((err)=>{
         console.log(err.response.error)
