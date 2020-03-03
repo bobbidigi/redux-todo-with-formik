@@ -1,13 +1,25 @@
 import React from 'react'
-import {withFormik,  Form, Feild} from 'formik'
+import {withFormik,  Form, Field} from 'formik'
 import * as yup from 'yup'
 
-const TodoForm = () => {
+const TodoForm = (props) => {
     return (
-        <div>
-            
-        </div>
+        <Form>
+            <Field type="text" 
+            name="todo" 
+            placeholder="new quote"
+            value={props.values.todo}/>
+        </Form>
     )
 }
 
-export default withFormik({mapPropsToValues})(TodoForm)
+export default withFormik({
+    mapPropsToValues: (values) => {
+        return {
+            todo: values.todo || ''        }
+    },
+    validationSchema: yup.object().shape({
+      todo: yup.string().required('please enter a quote')  
+    }),
+    handleSubmit: values => {}
+})(TodoForm)
